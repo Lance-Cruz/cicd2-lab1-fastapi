@@ -1,36 +1,23 @@
-# CICD-2 FastAPI Lab Template
+# CICD-2 FastAPI Lab 1
 
 This repository contains a FastAPI lab for the CICD-2 module.  
-Use this `README.md` as the standard structure for future labs.
 
 ---
 
-## Lab Title
+## Lab 1 — Creating a Basic FastAPI Application
 
-**Replace this with the lab title**
-
-Example:
-
-> Lab 1 — Creating a Basic FastAPI Application
+This lab build a small FastAPI microservice which includes basic route/endpoints and a Pydantic model for validation
 
 ---
 ## Repository Structure
 
-Use the following structure for the labs:
-
 ```text
-project-name/
+cicd2-lab1-fastapi/
 │
 ├── app/
 │   ├── __init__.py
 │   ├── main.py
-│   ├── schemas.py
-│   ├── services.py
-│   └── models.py
-│
-├── tests/
-│   ├── __init__.py
-│   └── test_main.py
+│   └── schemas.py
 │
 ├── requirements.txt
 ├── README.md
