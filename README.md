@@ -1,12 +1,12 @@
-# CICD-2 FastAPI Lab 2
+# CICD-2 FastAPI Lab 3
 
 This repository contains a FastAPI lab for the CICD-2 module.  
 
 ---
 
-## Lab 2 — FastAPI Testing, Coverage, and CI
+## Lab 3 — FastAPI + SQLAlchemy + SQLite
 
-This lab adds automated testing to our FastAPI endpoints with pytest, coverage reporting, and a GitHub Actions CI workflow
+This lab replaces the in-memory Python list with a real SQLite database.
 
 ---
 ## Repository Structure
@@ -20,7 +20,9 @@ cicd2-lab1-fastapi/
 │ 
 ├── app/
 │   ├── __init__.py
+│   ├── database.py
 │   ├── main.py
+│   ├── models.py
 │   └── schemas.py
 │
 ├── tests/
