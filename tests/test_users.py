@@ -37,13 +37,18 @@ def test_duplicate_user_returns_409(client):
     assert "exists" in response.json()["detail"].lower()
 
 @pytest.mark.parametrize(
-    "bad_student_id",
-    ["1234567", "s1234567", "S1234", "S12345678"],
+    "bad_sid",
+    [
+        "1234567",
+        "s1234567",
+        "S1234", 
+        "S12345678"
+    ],
 )
-def test_bad_student_id_returns_422(client, bad_student_id):
+def test_bad_student_id_returns_422(client, bad_sid):
     response = client.post(
         "/api/users",
-        json=user_payload(uid=2, student_id=bad_student_id),
+        json=user_payload(sid=bad_sid),
     )
 
     assert response.status_code == 422
