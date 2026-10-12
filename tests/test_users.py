@@ -19,7 +19,7 @@ def test_create_user_returns_201(client):
 
     assert response.status_code == 201
     data = response.json()
-    assert data["user_id"] == 1
+    assert data["id"] == 1
     assert data["name"] == "Lance"
     assert data["email"] == "lance@atu.ie"
     assert data["age"] == 21
