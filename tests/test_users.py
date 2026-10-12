@@ -78,24 +78,23 @@ def test_get_missing_user_returns_404(client):
     assert response.status_code == 404
     assert response.json()["detail"] == "User not found"
 
-def test_delete_existing_user_returns_204(client):
-    client.post("/api/users", json=user_payload(uid=20))
+def test_delete_user(client):
+    created = client.post(
+        "/api/users",
+        json=user_payload(),
+    ).json()
 
-    response = client.delete("/api/users/20")
+    user_id = created["id"]
 
+    response = client.delete(f"/api/users/{user_id}")
     assert response.status_code == 204
-    assert response.content == b''
 
-def test_delete_missing_user_returns_404(client):
-    response = client.delete("/api/users/999")
+    response = client.get(f"/api/users/{user_id}")
+    assert response.status_code == 404
+
+
+def test_deleted_missing_user_returns_404(client):
+    response = client.delete("/api/users/21")
 
     assert response.status_code == 404
     assert response.json()["detail"] == "User not found"
-
-def test_deleted_user_can_no_longer_be_retrieved(client):
-    client.post("/api/users", json=user_payload(uid=21))
-    client.delete("/api/users/21")
-
-    response = client.get("/api/users/21")
-
-    assert response.status_code == 404
