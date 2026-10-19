@@ -7,13 +7,9 @@ from app.database import engine, get_db
 from app.models import Base, UserDB 
 from app.schemas import UserCreate, UserRead 
  
-# For this lab, create the tables when the module loads. 
-# We will improve application startup structure later. 
 Base.metadata.create_all(bind=engine) 
  
-app = FastAPI(title="Lab 3 - FastAPI SQLAlchemy User API")
-
-users: list[UserCreate] = []
+app = FastAPI(title="Lab 4 - FastAPI SQLAlchemy User API")
 
 @app.get("/health")
 def health():
@@ -39,7 +35,7 @@ def add_user(new_user: UserCreate, db: Session = Depends(get_db)):
         db.rollback()
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail="A user with this email or student_id already exists"
+            detail="A user with this email or student_id already exists",
         )
 
     return db_user

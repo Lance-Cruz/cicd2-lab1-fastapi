@@ -1,12 +1,12 @@
-# CICD-2 FastAPI Lab 3
+# CICD-2 FastAPI Lab 4
 
 This repository contains a FastAPI lab for the CICD-2 module.  
 
 ---
 
-## Lab 3 — FastAPI + SQLAlchemy + SQLite
+## Lab 4 — Testing a Database-backed API
 
-This lab replaces the in-memory Python list with a real SQLite database.
+This lab repairs and extends the automated tests so that pytest uses its own isolated database 
 
 ---
 ## Repository Structure
