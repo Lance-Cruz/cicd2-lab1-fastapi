@@ -11,7 +11,7 @@ from app.schemas import UserCreate, UserRead
  
 Base.metadata.create_all(bind=engine) 
  
-app = FastAPI(title="Lab 4 - FastAPI SQLAlchemy User API")
+app = FastAPI(title="Lab 5 - FastAPI SQLAlchemy User API")
 
 @app.get("/health")
 def health():
