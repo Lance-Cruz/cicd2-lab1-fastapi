@@ -1,12 +1,12 @@
-# CICD-2 FastAPI Lab 5
+# CICD-2 FastAPI Lab 6
 
 This repository contains a FastAPI lab for the CICD-2 module.  
 
 ---
 
-## Lab 5 — Two FastAPI Microservices with HTTPX
+## Lab 6 — Containerising Microservices with Docker Compose and GHCR
 
-This lab adds a separate Product Service and allows the main User API to call it using HTTPX.
+This lab containerise both microservices, connects them using Docker Compose, and publish both images to GitHub Container Registry 
 
 ---
 ## Repository Structure
@@ -16,6 +16,7 @@ cicd2-lab1-fastapi/
 │
 ├── .github/
 │   └── workflows/
+│       ├── build-push-images.yml
 │       └── ci.yml
 │ 
 ├── app/
@@ -26,16 +27,24 @@ cicd2-lab1-fastapi/
 │   ├── product_client.py
 │   └── schemas.py
 │
+├── product_service/
+│   ├── __init__.py
+│   └── main.py
+│   
 ├── tests/
 │   ├── conftest.py
 │   ├── test_health.py
 │   ├── test_remote_products.py
 │   └── test_users.py
 │
-├── pytest.ini
-├── requirements.txt
+├── .dockerignore
+├── .gitignore
+├── Dockerfile.product
+├── Dockerfile.user
 ├── README.md
-└── .gitignore
+├── compose.yaml
+├── pytest.ini
+└── requirements.txt
 ```
 
 ---
@@ -66,3 +75,14 @@ The Product Service has a GET endpoint:
 GET /api/products/{product_id}
 ```
 This endpoint is used to retrieve a product by its ID.
+
+---
+### Running Docker Compose
+---
+```
+docker compose config
+docker compose up --build -d
+docker compose ps
+curl -i http://127.0.0.1:8001/products/1
+curl -i http://127.0.0.1:8000/api/products/1
+```
